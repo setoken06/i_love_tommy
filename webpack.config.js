@@ -8,7 +8,7 @@ const copyRules = [
     to: __dirname + "/dist/index.html",
   },
   {
-    from: __dirname + "/src/index.tsx",
+    from: __dirname + "/src/index.jsx",
     to: __dirname + "/dist/main.js",
   },
   {
@@ -19,7 +19,7 @@ const copyRules = [
 
 module.exports = {
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    extensions: [".js", ".jsx"],
     modules: [path.resolve("./src"), path.resolve("./node_modules")],
   },
   devServer: {
@@ -45,12 +45,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: "ts-loader",
-          },
-        ],
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
       },
     ],
   },
